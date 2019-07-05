@@ -1,10 +1,17 @@
 package com.redhat.gpte;
 
 import com.redhat.gpte.Applicant
-
 rule "Approve Good Credit"
+agenda-group "a"  // or add this to each rule a1, a2,...
   when 
     a: Applicant(creditScore > 400)
+  then
+    a.setApproved(true);
+end 
+rule "Approve Good Credit V2"
+agenda-group "b"  // or add this to each rule a1, a2,...
+  when 
+    a: Applicant(creditScore > 500)
   then
     a.setApproved(true);
 end 
